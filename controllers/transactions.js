@@ -62,6 +62,7 @@ module.exports = {
   createTransaction: catchAsync(async (req, res, next) => {
     const { amount, description, userId, categoryId, toUserId } = req.body;
 
+
     // if (!amount || !description || !userId || !categoryId || !type) {
     //   const httpError = createHttpError(
     //     400,
@@ -78,7 +79,7 @@ module.exports = {
     //   )
     //   return next(httpError)
     // }
-    const date = new Date();
+    const date = new Date()
 
     try {
       const response = await Transaction.create({

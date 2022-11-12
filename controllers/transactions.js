@@ -10,7 +10,6 @@ module.exports = {
   getTransactions: catchAsync(async (req, res, next) => {
     const { categoryId, description, page, size, currency } = req.query;
     const userId = req.body.id;
-    console.log(userId);
     const filter = filterElements({
       userId,
       categoryId,
@@ -22,7 +21,6 @@ module.exports = {
     try {
       const data = await Transaction.findAndCountAll({
         where: { [Op.and]: [filter] },
-        include: Category,
         limit,
         offset,
       });

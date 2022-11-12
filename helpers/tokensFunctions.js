@@ -37,10 +37,8 @@ async function authMiddleware(req, res, next) {
 
   try {
     const payload = await verifyJwt(bearerToken);
-
     req.body.id = payload.id;
-
-    req.body.username = payload.username;
+    req.body.email = payload.email;
     return next();
   } catch (error) {
     return res

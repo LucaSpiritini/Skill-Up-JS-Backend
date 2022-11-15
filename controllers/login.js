@@ -16,26 +16,23 @@ module.exports = {
       );
       next(httpError);
     }
-    console.log("asd");
 
     const hashPass = await bcrypt.hash(password, 10).then(function (hash) {
       return hash;
     });
     try {
-      console.log("asd");
-
       const searchUser = await User.findOne({ where: { email } });
 
       if (searchUser) {
         return res.status(404).send({ error: "Error Email Exist!" });
       }
-      console.log(req.body);
+
       const user = await User.create({
         firstName,
         lastName,
         email,
         password: hashPass,
-        avatar,
+        avatar: avatar ? avatar : "https://www.alkemy.org/logo512.png",
       });
 
       const token = await generateToken({
@@ -72,7 +69,6 @@ module.exports = {
 
       const userFound = await User.findOne({ where: { email } });
 
-      console.log(userFound);
       if (!userFound) {
         const httpError = createHttpError(
           404,

@@ -32,8 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       avatar: {
         type: DataTypes.STRING,
-        defaultValue:
-          "http://www.elblogdecha.org/wp-content/uploads/2021/06/perfil-vacio.jpg",
+        defaultValue: "alkemy.org/logo512.png",
       },
       password: DataTypes.STRING,
       roleId: { type: DataTypes.INTEGER, defaultValue: 2 },
